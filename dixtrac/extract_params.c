@@ -515,10 +515,10 @@ diskinfo_get_band(int cyl)
 void 
 get_disk_label(char *label)
 {
-  char product[SID_PRODUCT_SIZE+1];
-  char vendor[SID_VENDOR_SIZE+1];
-  char serialnum[SVPD_SERIAL_NUM_SIZE+1];
-  char revision[SID_REVISION_SIZE+1];
+  char product[SID_PRODUCT_SIZE+128];
+  char vendor[SID_VENDOR_SIZE+128];
+  char serialnum[SVPD_SERIAL_NUM_SIZE+128];
+  char revision[SID_REVISION_SIZE+128];
 
   memset(product, 0, sizeof(product));
   memset(vendor, 0, sizeof(vendor));
