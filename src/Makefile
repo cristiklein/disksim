@@ -32,8 +32,9 @@ FLEX = flex
 
 include .paths
 
-LDFLAGS = -lm -L. -ldisksim $(DISKMODEL_LDFLAGS) $(MEMSMODEL_LDFLAGS) \
+LDFLAGS = -L. -ldisksim $(DISKMODEL_LDFLAGS) $(MEMSMODEL_LDFLAGS) \
                             $(LIBPARAM_LDFLAGS) $(LIBDDBG_LDFLAGS) 
+LDLIBS = -lm
 
 HP_FAST_OFLAGS = +O4
 NCR_FAST_OFLAGS = -O4 -Hoff=BEHAVED 
@@ -125,10 +126,10 @@ libdisksim.a: $(MODULEDEPS) $(DISKSIM_OBJ) disksim_interface.o
 	cp libdisksim.a ../lib
 
 disksim : $(MODULEDEPS) libdisksim.a disksim_main.o 
-	$(CC) $(CFLAGS) -o $@ disksim_main.o $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ disksim_main.o $(LDFLAGS) $(LDLIBS)
 
 syssim: syssim_driver.o libdisksim.a
-	$(CC) $(CFLAGS) -o $@ syssim_driver.o disksim_interface.o $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ syssim_driver.o disksim_interface.o $(LDFLAGS) $(LDLIBS)
 
 ########################################################################
 

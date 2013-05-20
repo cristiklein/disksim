@@ -709,7 +709,7 @@ void io_initialize (int standalone)
    bus_set_depths();
    // fprintf (outputfile, "Back from bus_set_depths\n");
 
-   StaticAssert (sizeof(ioreq_event) <= DISKSIM_EVENT_SIZE);
+   //StaticAssert (sizeof(ioreq_event) <= DISKSIM_EVENT_SIZE);
    device_initialize();
    bus_initialize();
    controller_initialize();
